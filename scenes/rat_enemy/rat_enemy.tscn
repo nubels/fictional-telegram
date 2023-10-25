@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://23d5qc20kvmd"]
+[gd_scene load_steps=5 format=3 uid="uid://23d5qc20kvmd"]
 
 [ext_resource type="Texture2D" uid="uid://cex575bjtrqb" path="res://scenes/rat_enemy/rat_enemy.png" id="1_3txql"]
 [ext_resource type="Script" path="res://scenes/rat_enemy/rat_enemy.gd" id="1_fjre1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lriuj"]
+radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pio5x"]
 radius = 6.0
 
 [node name="RatEnemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_fjre1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_lriuj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3txql")

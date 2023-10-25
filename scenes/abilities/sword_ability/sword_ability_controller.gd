@@ -1,7 +1,7 @@
 class_name SwordAbilityController extends Node
 
 @export var sword_ability_scene: PackedScene
-@export var max_range := 150
+@export var max_range := 125
 
 
 @onready var player = get_tree().get_first_node_in_group("player") as Player
@@ -16,7 +16,7 @@ func on_spawn_timer_timeout() -> void:
 	if not player: return
 	
 	var enemies = get_tree().get_nodes_in_group("enemy")
-	enemies.filter(func(enemy: Node2D):
+	enemies = enemies.filter(func(enemy: Node2D):
 		return enemy.global_position.distance_squared_to(player.global_position) < pow(max_range, 2)
 	)
 	
@@ -28,7 +28,12 @@ func on_spawn_timer_timeout() -> void:
 		return a_distance < b_distance
 	)
 	
+	var closest_enemy = enemies[0] as Node2D
 	
 	var sword_ability_instance = sword_ability_scene.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_ability_instance)
-	sword_ability_instance.global_position = enemies[0].global_position
+	sword_ability_instance.global_position = closest_enemy.global_position 
+	sword_ability_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+	
+	var enemy_direction = closest_enemy.global_position - sword_ability_instance.global_position
+	sword_ability_instance.rotation = enemy_direction.angle()
