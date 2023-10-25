@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8ngwqlp7l0ty"]
+[gd_scene load_steps=9 format=3 uid="uid://8ngwqlp7l0ty"]
 
+[ext_resource type="PackedScene" uid="uid://bfyka47cvsljg" path="res://scenes/ui/arena_time_ui.tscn" id="1_5uedn"]
 [ext_resource type="PackedScene" uid="uid://by4eyhut4xpje" path="res://scenes/player/player.tscn" id="1_bpxac"]
 [ext_resource type="PackedScene" uid="uid://l3mjjppkgmam" path="res://scenes/manager/enemy_manager.tscn" id="1_ej8mo"]
 [ext_resource type="Texture2D" uid="uid://caqqyik1rm2ye" path="res://assets/environment/tilemap_packed.png" id="1_gf51w"]
+[ext_resource type="PackedScene" uid="uid://m63chrv550jt" path="res://scenes/manager/arena_time_manager.tscn" id="2_v5vka"]
 [ext_resource type="PackedScene" uid="uid://bsfci2l28on3c" path="res://scenes/game_camera/game_camera.tscn" id="3_dndh3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ykwqx"]
@@ -179,6 +181,11 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_ykwqx")
 
 [node name="Main" type="Node"]
+
+[node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("area_time_manager") instance=ExtResource("1_5uedn")]
+area_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="ArenaTimeManager" parent="." instance=ExtResource("2_v5vka")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("1_ej8mo")]
 
