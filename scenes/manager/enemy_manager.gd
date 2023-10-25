@@ -4,6 +4,7 @@ class_name EnemyManager extends Node
 
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var player = get_tree().get_first_node_in_group("player") as Player
+@onready var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
 
 var spawn_radius = (ProjectSettings.get_setting("display/window/size/viewport_width") / 2) + 50
 
@@ -18,5 +19,6 @@ func on_enemy_spawn_timer_timeout() -> void:
 	var spawn_position = player.global_position + (random_direction * spawn_radius)
 	
 	var enemy_instance = rat_enemy_scene.instantiate() as RatEnemy
-	get_parent().add_child(enemy_instance)
+	
+	entities_layer.add_child(enemy_instance)
 	enemy_instance.global_position = spawn_position
