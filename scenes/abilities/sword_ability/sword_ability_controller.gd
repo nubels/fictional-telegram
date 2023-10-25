@@ -8,10 +8,12 @@ class_name SwordAbilityController extends Node
 @onready var spawn_timer: Timer = %SpawnTimer
 
 var damage = 5
-
+var base_wait_time
 
 func _ready() -> void:
+	base_wait_time = spawn_timer.wait_time
 	spawn_timer.timeout.connect(on_spawn_timer_timeout)
+	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 
 func on_spawn_timer_timeout() -> void:
@@ -40,3 +42,13 @@ func on_spawn_timer_timeout() -> void:
 	
 	var enemy_direction = closest_enemy.global_position - sword_ability_instance.global_position
 	sword_ability_instance.rotation = enemy_direction.angle()
+
+
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+	if upgrade.id != "sword_rate": return
+	
+	var percent_reduction = current_upgrades.sword_rate.quantity * .1
+	spawn_timer.wait_time = base_wait_time * (1 - percent_reduction)
+	spawn_timer.start()
+	
+	print(spawn_timer.wait_time)
