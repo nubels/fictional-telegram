@@ -7,6 +7,8 @@ class_name SwordAbilityController extends Node
 @onready var player = get_tree().get_first_node_in_group("player") as Player
 @onready var spawn_timer: Timer = %SpawnTimer
 
+var damage = 5
+
 
 func _ready() -> void:
 	spawn_timer.timeout.connect(on_spawn_timer_timeout)
@@ -32,6 +34,7 @@ func on_spawn_timer_timeout() -> void:
 	
 	var sword_ability_instance = sword_ability_scene.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_ability_instance)
+	sword_ability_instance.hitbox_component.damage = damage
 	sword_ability_instance.global_position = closest_enemy.global_position 
 	sword_ability_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
 	

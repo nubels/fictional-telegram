@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l3mjjppkgmam"]
 
 [ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_ohilt"]
-[ext_resource type="PackedScene" uid="uid://23d5qc20kvmd" path="res://scenes/rat_enemy/rat_enemy.tscn" id="2_3jqfo"]
+[ext_resource type="PackedScene" uid="uid://23d5qc20kvmd" path="res://scenes/abilities/game_objects/rat_enemy/rat_enemy.tscn" id="2_3jqfo"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_ohilt")
