@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://8ngwqlp7l0ty"]
+[gd_scene load_steps=14 format=3 uid="uid://8ngwqlp7l0ty"]
 
 [ext_resource type="PackedScene" uid="uid://bfyka47cvsljg" path="res://scenes/ui/arena_time_ui.tscn" id="1_5uedn"]
 [ext_resource type="PackedScene" uid="uid://by4eyhut4xpje" path="res://scenes/abilities/game_objects/player/player.tscn" id="1_bpxac"]
 [ext_resource type="PackedScene" uid="uid://l3mjjppkgmam" path="res://scenes/manager/enemy_manager.tscn" id="1_ej8mo"]
 [ext_resource type="Texture2D" uid="uid://caqqyik1rm2ye" path="res://assets/environment/tilemap_packed.png" id="1_gf51w"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_v7jjn"]
 [ext_resource type="PackedScene" uid="uid://dmlblp6c6225a" path="res://scenes/ui/experience_bar.tscn" id="2_teiuo"]
 [ext_resource type="PackedScene" uid="uid://m63chrv550jt" path="res://scenes/manager/arena_time_manager.tscn" id="2_v5vka"]
 [ext_resource type="PackedScene" uid="uid://bsfci2l28on3c" path="res://scenes/abilities/game_objects/game_camera/game_camera.tscn" id="3_dndh3"]
@@ -186,10 +185,7 @@ terrain_set_0/terrain_0/name = "floor"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_ykwqx")
 
-[node name="Main" type="Node" node_paths=PackedStringArray("player")]
-script = ExtResource("1_v7jjn")
-end_screen_scene = ExtResource("4_iqfwk")
-player = NodePath("Entities/Player")
+[node name="Main" type="Node"]
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("area_time_manager") instance=ExtResource("1_5uedn")]
 area_time_manager = NodePath("../ArenaTimeManager")
@@ -219,6 +215,5 @@ layer_0/tile_data = PackedInt32Array(1769521, 0, 4, 1703985, 0, 4, 1638449, 0, 4
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_bpxac")]
-unique_name_in_owner = true
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

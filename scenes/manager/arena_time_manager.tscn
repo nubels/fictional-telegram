@@ -5,6 +5,6 @@
 [node name="ArenaTimeManager" type="Node"]
 script = ExtResource("1_ebf0p")
 
-[node name="ArenaTime" type="Timer" parent="."]
+[node name="ArenaTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true

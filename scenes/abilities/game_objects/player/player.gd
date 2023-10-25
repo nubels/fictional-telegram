@@ -6,17 +6,20 @@ class_name Player extends CharacterBody2D
 
 @export var health_component: HealthComponent
 
-@onready var collision_area: Area2D = $CollisionArea2D
+@onready var collision_area: Area2D = $CollisionArea
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
+@onready var health_bar: ProgressBar = $HealthBar
 
-var number_colliding_bodies: int
+var number_colliding_bodies: int = 0
 
 func _ready() -> void:
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 	
 	damage_interval_timer.timeout.connect(on_damager_interval_timer)
-
+	health_component.health_changed.connect(on_health_changed)
+	
+	update_health_display()
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -38,7 +41,11 @@ func check_deal_damage() -> void:
 	print(health_component.current_health)
 
 
+func update_health_display() -> void:
+	health_bar.value = health_component.get_health_percent()
 
+
+# keine ahnung warum aber die werden falsch ausgelöst
 func on_body_entered(other_body: Node2D) -> void:
 	number_colliding_bodies += 1
 	check_deal_damage()
@@ -50,3 +57,7 @@ func on_body_exited(other_body: Node2D) -> void:
 
 func on_damager_interval_timer() -> void:
 	check_deal_damage()
+
+
+func on_health_changed() -> void:
+	update_health_display()
