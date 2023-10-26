@@ -10,6 +10,7 @@ class_name Player extends CharacterBody2D
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var ability_manager: Node = $AbilityManager
+@onready var visuals: Node2D = $Visuals
 
 var number_colliding_bodies: int = 0
 
@@ -33,6 +34,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+	
+	
+	
+	var move_sign = sign(input_vector.x)
+	
+	if not is_zero_approx(move_sign):
+		visuals.scale = Vector2(move_sign, 1)
 
 
 func check_deal_damage() -> void:

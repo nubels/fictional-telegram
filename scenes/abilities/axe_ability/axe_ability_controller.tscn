@@ -8,4 +8,5 @@ script = ExtResource("1_q8q2r")
 axe_ability_scene = ExtResource("2_bpq8b")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
