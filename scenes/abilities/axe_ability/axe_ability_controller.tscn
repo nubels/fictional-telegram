@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmjl34wgw6cn"]
+
+[ext_resource type="Script" path="res://scenes/abilities/axe_ability/axe_ability_controller.gd" id="1_q8q2r"]
+[ext_resource type="PackedScene" uid="uid://bmqjv7lw4jx5q" path="res://scenes/abilities/axe_ability/axe_ability.tscn" id="2_bpq8b"]
+
+[node name="AxeAbilityController" type="Node"]
+script = ExtResource("1_q8q2r")
+axe_ability_scene = ExtResource("2_bpq8b")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+autostart = true

@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 @onready var collision_area: Area2D = $CollisionArea
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var ability_manager: Node = $AbilityManager
 
 var number_colliding_bodies: int = 0
 
@@ -18,6 +19,8 @@ func _ready() -> void:
 	
 	damage_interval_timer.timeout.connect(on_damager_interval_timer)
 	health_component.health_changed.connect(on_health_changed)
+	
+	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	
 	update_health_display()
 
@@ -61,3 +64,9 @@ func on_damager_interval_timer() -> void:
 
 func on_health_changed() -> void:
 	update_health_display()
+
+
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+	if not ability_upgrade is Ability: return
+	
+	ability_manager.add_child(ability_upgrade.ability_controller_scene.instantiate())

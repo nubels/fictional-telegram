@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://8ngwqlp7l0ty"]
 
 [ext_resource type="PackedScene" uid="uid://bfyka47cvsljg" path="res://scenes/ui/arena_time_ui.tscn" id="1_5uedn"]
-[ext_resource type="PackedScene" uid="uid://by4eyhut4xpje" path="res://scenes/abilities/game_objects/player/player.tscn" id="1_bpxac"]
+[ext_resource type="PackedScene" uid="uid://by4eyhut4xpje" path="res://scenes/game_objects/player/player.tscn" id="1_bpxac"]
 [ext_resource type="PackedScene" uid="uid://l3mjjppkgmam" path="res://scenes/manager/enemy_manager.tscn" id="1_ej8mo"]
 [ext_resource type="Texture2D" uid="uid://caqqyik1rm2ye" path="res://assets/environment/tilemap_packed.png" id="1_gf51w"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_v7jjn"]
 [ext_resource type="PackedScene" uid="uid://dmlblp6c6225a" path="res://scenes/ui/experience_bar.tscn" id="2_teiuo"]
 [ext_resource type="PackedScene" uid="uid://m63chrv550jt" path="res://scenes/manager/arena_time_manager.tscn" id="2_v5vka"]
-[ext_resource type="PackedScene" uid="uid://bsfci2l28on3c" path="res://scenes/abilities/game_objects/game_camera/game_camera.tscn" id="3_dndh3"]
+[ext_resource type="PackedScene" uid="uid://bsfci2l28on3c" path="res://scenes/game_objects/game_camera/game_camera.tscn" id="3_dndh3"]
 [ext_resource type="PackedScene" uid="uid://bo3uxuj1osnnx" path="res://scenes/ui/end_screen.tscn" id="4_iqfwk"]
 [ext_resource type="PackedScene" uid="uid://dmkjcd00nwolc" path="res://scenes/manager/experience_manager.tscn" id="7_k47n4"]
 [ext_resource type="PackedScene" uid="uid://gg860rwgeoj2" path="res://scenes/ui/upgrade_screen.tscn" id="7_wo4mo"]
@@ -110,6 +110,7 @@ texture = ExtResource("1_gf51w")
 2:1/0/terrain_set = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 3:1/0 = 0
 3:1/0/terrain_set = 0
 3:1/0/terrain = 0
