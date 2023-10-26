@@ -200,7 +200,8 @@ experience_manager = NodePath("../ExperienceManager")
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_v5vka")]
 end_screen_scene = ExtResource("4_iqfwk")
 
-[node name="EnemyManager" parent="." instance=ExtResource("1_ej8mo")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_ej8mo")]
+arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("7_k47n4")]
 
