@@ -44,8 +44,8 @@ func on_enemy_spawn_timer_timeout() -> void:
 	enemy_spawn_timer.start()
 	
 	var enemy_instance = rat_enemy_scene.instantiate() as RatEnemy
-	entities_layer.add_child(enemy_instance)
 	enemy_instance.global_position = get_spawn_position()
+	entities_layer.add_child(enemy_instance)
 
 
 func on_arena_difficulty_increased(difficulty: int) -> void:
